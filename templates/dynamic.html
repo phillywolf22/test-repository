@@ -1,0 +1,29 @@
+{% from "_rendermacro.html" import renderfield %}
+<!---import the macro html, python style-->
+
+<html>
+
+<head>
+
+    <title>Dynamic Form</title>
+
+</head>
+
+<body>
+
+    <h1>The form is below</h1>
+    <form action="/dynamic" method="POST">
+        {{ form.csrf_token }}
+    
+        {{ renderfield(form.name) }}
+       
+        {% for name in names %}
+        {{ renderfield(form[name]) }}
+        {% endfor %}
+
+        <input type="Submit" value='SUBMIT'>
+
+    </form>
+</body>
+
+</html>

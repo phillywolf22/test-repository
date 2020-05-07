@@ -1,0 +1,56 @@
+{% from "_rendermacro.html" import renderfield %}  <!---import the macro html, python style-->
+
+<html>
+    <head>
+
+        <title>Login Form</title>
+
+    </head>
+ <body>
+     
+    <h1>The form is below</h1>
+    <form action="/" method="POST">
+        {{ form.csrf_token }}
+        <!-- {{ form.username.label}} {{form.username}} -->
+        <!-- <ul>
+            {% for error in form.username.errors %}
+            <li style="color:red;">{{ error }}</li>
+            {% endfor %}
+        </ul> -->
+        {{ renderfield(form.username) }}   <!-- this is use the macro-->
+        {{ form.password.label}}  {{form.password}}
+        <ul>
+            {% for error in form.password.errors %}
+            <li style="color:red;">{{ error }}</li>
+            {% endfor %}
+        </ul>
+        {{form.age.label}} {{form.age}}
+        <ul>
+                {% for error in form.age.errors %}
+                <li> {{ error }}</li>
+                {% endfor %}
+            </ul>
+        {{form.true.label}}  {{form.true}}
+        {{form.email.label}} {{form.email}}
+        <ul>
+                {% for error in form.email.errors %}
+                <li> {{ error }}</li>
+                {% endfor %}
+
+        </ul>
+        {{ renderfield(form.first_name) }}
+        {{ renderfield(form.last_name) }}
+
+        {{ form.home_phone.label }} {{form.home_phone}}
+        {{ form.mobile_phone.label }}  {{form.mobile_phone}}
+
+        {% for field in form.years %}
+            {{ renderfield(field) }}
+        {% endfor %}
+
+        <input type = "Submit" value='SUBMIT'>
+        
+    </form>
+ </body>
+
+</html>
